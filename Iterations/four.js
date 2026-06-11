@@ -24,6 +24,9 @@ for (const key in language) {
     // here we are getting keys of the array that is technically index so for values
     console.log(language[key]);
 }
-/* This is the main difference b/w for of and for in loop 
+/* 
+To remember
+This is the main difference b/w for of and for in loop 
 In for of we can get the values directly but in for in loop we get keys
+
 */
