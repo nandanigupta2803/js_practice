@@ -1,0 +1,37 @@
+<!-- setTimeOut and clearTimeOut-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Javascript</h1>
+    <button id="stop">stop</button>
+</body>
+<script>
+    // setTimeout(function(){
+    //     console.log("Nandani");
+    // },3000)
+// Alertanative method by giving reference
+    // const sayName = function () {
+    //     console.log("Nandani");
+    // }
+    // setTimeout(sayName, 3000)
+
+// Now to change heading after certain time
+    const changeHeading = function(){
+        document.querySelector('h1').innerHTML = "Js Practice"
+    }
+    //setTimeout(changeHeading, 3000)
+// if we want to stop this timeout function b an event
+const changeAgain = setTimeout(changeHeading,3000)
+document.querySelector('#stop').addEventListener('click', function(){
+    clearTimeout(changeAgain)
+    console.log("STOPPED")
+// Output - If we click the stop button before the time time of setTimeOut
+// It does not change
+})   
+</script>
+</html>
