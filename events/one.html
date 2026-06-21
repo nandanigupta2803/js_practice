@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>htnml Events </title>
+</head>
+<body style="background-color: #414141; color: aliceblue;">
+    <h2>Amazing image</h2>
+    <div >
+        <ul id="images">
+            <li><img width="200px" id="photoshop" src="https://images.pexels.com/photos/3561339/pexels-photo-3561339.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt="photoshop"></li>
+            <li><img width="200px" id="japan" src="https://images.pexels.com/photos/3532553/pexels-photo-3532553.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt=""></li>
+            <li><img width="200px" id="river" src="https://images.pexels.com/photos/3532551/pexels-photo-3532551.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt=""></li>
+            <li><img width="200px" id="owl" src="https://images.pexels.com/photos/3532552/pexels-photo-3532552.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt="" ></li>
+            <li><img width="200px" id="prayer" src="https://images.pexels.com/photos/2522671/pexels-photo-2522671.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt=""></li>
+            <li><a style="color: aliceblue;" href="https://google.com" id="google">Google</a></li>
+        </ul>
+   </div>
+</body>
+<script>
+    //In JS events run sequentially though there are some exceptions
+    //how to insert a onclick event
+    // document.getElementById('owl').onclick = function () {
+    //     alert("Owl Clicked")
+    // }
+    //this method is also not much good we should use event listeners
+    //not only they provide onclick functionality but also give ability of propagation
+    // document.getElementById('owl').addEventListener('click', function(){
+    //     alert("Owl clicked Again")
+    // }, false)
+    /*
+    This third argument "False" is a default 
+    there are two values false and true.
+    this is used in event propagation 
+    there are two context - event bubbling and event capturing
+    Most commonly used is default i.e false used in event bubbling
+    lets see example how to prpagate an event and how to stop it
+    */
+//    document.getElementById('images').addEventListener('click',function(e){
+//     console.log("Clicked inside the ul");
+//    },false)
+//    document.getElementById('owl').addEventListener('click', function(e){
+//     console.log("Owl clicked");
+//     e.stopPropagation() //we can also stop propagation by using this.
+//    }, false)
+   //this bubbling- bottom to top
+   //first it will print the owl clicked now the "owl" is in images only, it will invoke the images function as well 
+   // and it will print "clicked inside the ul" as well
+
+
+   //this method is evnt capturing
+
+//     document.getElementById('images').addEventListener('click',function(e){
+//     console.log("Clicked inside the ul");
+//    },true)
+//    document.getElementById('owl').addEventListener('click', function(){
+//     console.log("Owl clicked");
+//    }, true)
+   // in this method it goes from bottom to top
+
+
+   //defaultPrevented
+   //lets take take example of google link pasted above when we click on it google opens
+   //for some reason I want to stop it from going to google.
+//    document.getElementById('google').addEventListener('click', function(e){
+//     e.preventDefault()
+//     console.log("Clicked On google");
+//     e.stopPropagation()
+//    }, false)
+
+//task - when we click on the pictures they remove from screen
+// we can select individual picture and then add event to all of them but it is not a good approach
+//b/c if the would be 100- 200 photos then it will a problem
+// so we target the "ul" so that all of the picturs can be operated.
+document.querySelector('#images').addEventListener('click', function(e){
+    // console.log(e.target.parentNode);
+    // let removeIt = e.target.parentNode
+    // removeIt.remove()
+//now there a problem if I click anywhere on the screen except pictures the whole thing removes, so we use strict checks in the function
+    console.log(e.target.tagName);
+    if (e.target.tagName === 'IMG') {
+        console.log(e.target.id);
+        let removeIt = e.target.parentNode
+        removeIt.remove()
+    }
+
+}, false)
+</script>
+</html>
