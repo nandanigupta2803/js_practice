@@ -1,0 +1,35 @@
+<!-- setInterval-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Javascript on Codespace</h1>
+    <button id="start">start</button>
+    <button id="stop">stop</button>
+</body>
+<script>
+    // setInterval(function(){
+    //     //console.log("Nandani", Date.now());
+    // },3000)
+
+    //Alertnate method by reference
+// const sayDate = function(){
+//     console.log(Date.now());
+// }
+// setInterval(sayDate, 3000)
+
+    //there is also a third parameter in setInterval
+const sayDateAgain = function(str){
+    console.log(str, Date.now());
+}
+
+// to make it stop
+const stopIt = setInterval(sayDateAgain, 3000 , "Hii")
+clearInterval(stopIt)
+
+</script>
+</html>
